@@ -12,7 +12,6 @@ import logging
 from typing import Dict
 from src.utils.databricks_client import DatabricksClient
 from src.utils.config_loader import ConfigLoader
-from databricks import sql
 import time
 
 logging.basicConfig(level=logging.INFO)
