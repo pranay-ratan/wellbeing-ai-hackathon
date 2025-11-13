@@ -1,0 +1,329 @@
+{% extends "base.html" %}
+
+{% block title %}WellbeingAI - Mental Health Crisis Prevention{% endblock %}
+
+{% block content_class %}container-fluid p-0{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section bg-gradient-primary text-white py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h1 class="display-4 fw-bold mb-4">
+                    <i class="fas fa-brain me-3"></i>
+                    AI-Powered Mental Health Crisis Prevention
+                </h1>
+                <p class="lead mb-4">
+                    Transform workplace wellbeing with our multi-agent AI system that predicts,
+                    prevents, and intervenes in mental health crises before they escalate.
+                </p>
+                <div class="d-flex gap-3 flex-wrap">
+                    <a href="{{ url_for('dashboard') }}" class="btn btn-light btn-lg px-4">
+                        <i class="fas fa-rocket me-2"></i>Get Started
+                    </a>
+                    <a href="#features" class="btn btn-outline-light btn-lg px-4">
+                        <i class="fas fa-info-circle me-2"></i>Learn More
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="text-center">
+                    <div class="bg-gradient-to-br from-primary/20 to-primary/40 rounded-lg p-8 shadow-lg" style="max-width: 500px; margin: 0 auto;">
+                        <span class="material-symbols-outlined text-primary text-8xl mb-4">dashboard</span>
+                        <p class="text-slate-600 dark:text-slate-400">Interactive Dashboard Preview</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section id="features" class="py-5 bg-light">
+    <div class="container">
+        <div class="row text-center mb-5">
+            <div class="col-12">
+                <h2 class="display-5 fw-bold text-primary mb-3">Why WellbeingAI?</h2>
+                <p class="lead text-muted">Advanced AI technology meets compassionate mental health care</p>
+            </div>
+        </div>
+
+        <div class="row g-4">
+            <!-- Feature 1 -->
+            <div class="col-lg-4 col-md-6">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center p-4">
+                        <div class="feature-icon mb-3">
+                            <i class="fas fa-brain fa-3x text-primary"></i>
+                        </div>
+                        <h5 class="card-title fw-bold">Multi-Agent AI System</h5>
+                        <p class="card-text text-muted">
+                            6 specialized AI agents work together to provide comprehensive mental health monitoring,
+                            risk assessment, and personalized interventions.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feature 2 -->
+            <div class="col-lg-4 col-md-6">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center p-4">
+                        <div class="feature-icon mb-3">
+                            <i class="fas fa-shield-alt fa-3x text-success"></i>
+                        </div>
+                        <h5 class="card-title fw-bold">Privacy-First Design</h5>
+                        <p class="card-text text-muted">
+                            Built with GDPR compliance and HIPAA readiness. Uses k-anonymity and differential
+                            privacy to protect sensitive mental health data.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feature 3 -->
+            <div class="col-lg-4 col-md-6">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center p-4">
+                        <div class="feature-icon mb-3">
+                            <i class="fas fa-chart-line fa-3x text-info"></i>
+                        </div>
+                        <h5 class="card-title fw-bold">Real-Time Analytics</h5>
+                        <p class="card-text text-muted">
+                            Advanced analytics and machine learning provide early warning signs and predictive
+                            insights to prevent mental health crises.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feature 4 -->
+            <div class="col-lg-4 col-md-6">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center p-4">
+                        <div class="feature-icon mb-3">
+                            <i class="fas fa-users fa-3x text-warning"></i>
+                        </div>
+                        <h5 class="card-title fw-bold">Team & Individual Focus</h5>
+                        <p class="card-text text-muted">
+                            Separate dashboards for employees, managers, and administrators with role-specific
+                            insights and actionable recommendations.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feature 5 -->
+            <div class="col-lg-4 col-md-6">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center p-4">
+                        <div class="feature-icon mb-3">
+                            <i class="fas fa-lightbulb fa-3x text-danger"></i>
+                        </div>
+                        <h5 class="card-title fw-bold">Personalized Interventions</h5>
+                        <p class="card-text text-muted">
+                            AI-driven recommendations for breathing exercises, social connections,
+                            physical activity, and professional support when needed.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feature 6 -->
+            <div class="col-lg-4 col-md-6">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center p-4">
+                        <div class="feature-icon mb-3">
+                            <i class="fas fa-cloud fa-3x text-secondary"></i>
+                        </div>
+                        <h5 class="card-title fw-bold">Databricks Integration</h5>
+                        <p class="card-text text-muted">
+                            Seamlessly integrates with Databricks for enterprise-scale data processing,
+                            advanced analytics, and scalable AI model deployment.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- How It Works Section -->
+<section class="py-5">
+    <div class="container">
+        <div class="row text-center mb-5">
+            <div class="col-12">
+                <h2 class="display-5 fw-bold text-primary mb-3">How It Works</h2>
+                <p class="lead text-muted">A comprehensive approach to mental health prevention</p>
+            </div>
+        </div>
+
+        <div class="row g-4">
+            <!-- Step 1 -->
+            <div class="col-lg-3 col-md-6">
+                <div class="text-center">
+                    <div class="step-circle mb-3">
+                        <span class="step-number">1</span>
+                    </div>
+                    <h5 class="fw-bold">Daily Check-ins</h5>
+                    <p class="text-muted small">
+                        Employees complete quick, anonymous daily wellbeing assessments
+                        covering mood, stress, energy, and social connections.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="col-lg-3 col-md-6">
+                <div class="text-center">
+                    <div class="step-circle mb-3">
+                        <span class="step-number">2</span>
+                    </div>
+                    <h5 class="fw-bold">AI Risk Assessment</h5>
+                    <p class="text-muted small">
+                        Our Llama 70B-powered risk scorer analyzes patterns and
+                        identifies individuals who may need support.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="col-lg-3 col-md-6">
+                <div class="text-center">
+                    <div class="step-circle mb-3">
+                        <span class="step-number">3</span>
+                    </div>
+                    <h5 class="fw-bold">Personalized Interventions</h5>
+                    <p class="text-muted small">
+                        AI recommends evidence-based interventions tailored to
+                        each individual's risk profile and preferences.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="col-lg-3 col-md-6">
+                <div class="text-center">
+                    <div class="step-circle mb-3">
+                        <span class="step-number">4</span>
+                    </div>
+                    <h5 class="fw-bold">Manager Support</h5>
+                    <p class="text-muted small">
+                        Managers receive aggregated insights and guidance on
+                        supporting team members while maintaining privacy.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Stats Section -->
+<section class="py-5 bg-primary text-white">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="stat-item">
+                    <h3 class="display-4 fw-bold mb-2">87%</h3>
+                    <p class="mb-0">Risk Prediction Accuracy</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="stat-item">
+                    <h3 class="display-4 fw-bold mb-2">6</h3>
+                    <p class="mb-0">Specialized AI Agents</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="stat-item">
+                    <h3 class="display-4 fw-bold mb-2">24/7</h3>
+                    <p class="mb-0">Continuous Monitoring</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="stat-item">
+                    <h3 class="display-4 fw-bold mb-2">GDPR</h3>
+                    <p class="mb-0">Privacy Compliant</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="py-5 bg-light">
+    <div class="container text-center">
+        <h2 class="display-5 fw-bold text-primary mb-3">Ready to Transform Your Workplace Wellbeing?</h2>
+        <p class="lead text-muted mb-4">
+            Join leading organizations using WellbeingAI to create healthier, more supportive work environments.
+        </p>
+        <div class="d-flex gap-3 justify-content-center flex-wrap">
+            <a href="{{ url_for('dashboard') }}" class="btn btn-primary btn-lg px-5">
+                <i class="fas fa-play me-2"></i>Start Free Trial
+            </a>
+            <a href="mailto:contact@wellbeingai.com" class="btn btn-outline-primary btn-lg px-5">
+                <i class="fas fa-envelope me-2"></i>Contact Sales
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_scripts %}
+<style>
+.hero-section {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+}
+
+.feature-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: rgba(78, 115, 223, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.step-circle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.step-number {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.stat-item h3 {
+    color: white !important;
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        text-align: center;
+        padding: 3rem 0;
+    }
+
+    .display-4 {
+        font-size: 2.5rem;
+    }
+
+    .display-5 {
+        font-size: 2rem;
+    }
+}
+</style>
+{% endblock %}

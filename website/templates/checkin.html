@@ -1,0 +1,186 @@
+{% extends "base.html" %}
+
+{% block title %}Daily Check-in - WellbeingAI{% endblock %}
+
+{% block content %}
+<div class="min-h-screen bg-background-light dark:bg-background-dark">
+<div class="max-w-2xl mx-auto p-8">
+<!-- Header -->
+<div class="text-center mb-8">
+<h1 class="text-3xl font-bold text-slate-900 dark:text-white mb-2">Daily Wellbeing Check-in</h1>
+<p class="text-slate-600 dark:text-slate-400">Take a moment to reflect on your wellbeing today</p>
+</div>
+
+<!-- Check-in Form -->
+<div class="bg-white dark:bg-[#11221a] rounded-xl border border-slate-200 dark:border-[#32674d] p-8">
+<form id="checkinForm" class="space-y-8">
+<!-- Mood Scale -->
+<div>
+<label class="block text-lg font-semibold text-slate-900 dark:text-white mb-4">
+How are you feeling today?
+</label>
+<div class="grid grid-cols-5 gap-3 mb-4">
+{% for i in range(1, 11) %}
+<button type="button" class="mood-btn p-3 rounded-lg border-2 border-slate-200 dark:border-slate-600 hover:border-primary transition-colors" data-mood="{{ i }}">
+<span class="text-2xl">
+{% if i <= 3 %}😢{% elif i <= 5 %}😐{% elif i <= 7 %}🙂{% else %}😊{% endif %}
+</span>
+<p class="text-xs mt-1">{{ i }}/10</p>
+</button>
+{% endfor %}
+</div>
+<input type="hidden" id="moodInput" name="mood" required>
+</div>
+
+<!-- Stress Level -->
+<div>
+<label class="block text-lg font-semibold text-slate-900 dark:text-white mb-4">
+How stressed do you feel today?
+</label>
+<div class="space-y-3">
+{% for i in range(11) %}
+<label class="flex items-center space-x-3 p-3 rounded-lg border border-slate-200 dark:border-slate-600 hover:bg-slate-50 dark:hover:bg-slate-800 cursor-pointer">
+<input type="radio" name="stress" value="{{ i }}" class="text-primary">
+<span class="flex-1">{{ i }}/10 - {{ ['No stress', 'Minimal stress', 'Mild stress', 'Moderate stress', 'Somewhat stressed', 'Stressed', 'Quite stressed', 'Very stressed', 'Extremely stressed', 'Maximum stress', 'Overwhelmed'][i] }}</span>
+</label>
+{% endfor %}
+</div>
+</div>
+
+<!-- Energy Level -->
+<div>
+<label class="block text-lg font-semibold text-slate-900 dark:text-white mb-4">
+What's your energy level like today?
+</label>
+<div class="grid grid-cols-5 gap-3">
+{% for i in range(1, 11) %}
+<label class="flex flex-col items-center p-3 rounded-lg border-2 border-slate-200 dark:border-slate-600 hover:border-primary cursor-pointer">
+<input type="radio" name="energy" value="{{ i }}" class="sr-only">
+<div class="w-12 h-12 rounded-full bg-gradient-to-br from-primary/20 to-primary/40 flex items-center justify-center mb-2">
+<span class="text-xl">
+{% if i <= 3 %}🔋{% elif i <= 7 %}⚡{% else %}🚀{% endif %}
+</span>
+</div>
+<span class="text-sm font-medium">{{ i }}/10</span>
+</label>
+{% endfor %}
+</div>
+</div>
+
+<!-- Social Contact -->
+<div>
+<label class="block text-lg font-semibold text-slate-900 dark:text-white mb-4">
+How much social contact have you had today?
+</label>
+<div class="space-y-2">
+{% for i in range(6) %}
+<label class="flex items-center space-x-3 p-3 rounded-lg border border-slate-200 dark:border-slate-600 hover:bg-slate-50 dark:hover:bg-slate-800 cursor-pointer">
+<input type="radio" name="social_contact" value="{{ i }}" class="text-primary">
+<span class="flex-1">{{ i }}/5 - {{ ['No contact', 'Minimal contact', 'Some contact', 'Moderate contact', 'Good contact', 'Excellent contact'][i] }}</span>
+</label>
+{% endfor %}
+</div>
+</div>
+
+<!-- Sleep Quality -->
+<div>
+<label class="block text-lg font-semibold text-slate-900 dark:text-white mb-4">
+How well did you sleep last night?
+</label>
+<div class="space-y-2">
+<label class="flex items-center space-x-3 p-3">
+<input type="number" name="sleep_hours" min="0" max="24" step="0.5" placeholder="Hours slept" class="flex-1 px-3 py-2 border border-slate-200 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-800 text-slate-900 dark:text-white">
+<span class="text-slate-600 dark:text-slate-400">hours</span>
+</label>
+</div>
+</div>
+
+<!-- Isolation -->
+<div>
+<label class="block text-lg font-semibold text-slate-900 dark:text-white mb-4">
+Have you felt isolated today?
+</label>
+<div class="space-y-2">
+<label class="flex items-center space-x-3 p-3 rounded-lg border border-slate-200 dark:border-slate-600 hover:bg-slate-50 dark:hover:bg-slate-800 cursor-pointer">
+<input type="radio" name="isolation" value="false" class="text-primary" checked>
+<span class="flex-1">No, I've felt connected</span>
+</label>
+<label class="flex items-center space-x-3 p-3 rounded-lg border border-slate-200 dark:border-slate-600 hover:bg-slate-50 dark:hover:bg-slate-800 cursor-pointer">
+<input type="radio" name="isolation" value="true" class="text-primary">
+<span class="flex-1">Yes, I've felt isolated</span>
+</label>
+</div>
+</div>
+
+<!-- Concerns -->
+<div>
+<label class="block text-lg font-semibold text-slate-900 dark:text-white mb-4">
+Any concerns you'd like to share? (Optional)
+</label>
+<textarea name="concerns" rows="3" placeholder="Share anything that's on your mind..." class="w-full px-3 py-2 border border-slate-200 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-800 text-slate-900 dark:text-white resize-none"></textarea>
+</div>
+
+<!-- Submit Button -->
+<div class="pt-6">
+<button type="submit" class="w-full bg-primary text-slate-900 font-bold py-3 px-6 rounded-lg hover:opacity-90 transition-opacity flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">send</span>
+Submit Check-in
+</button>
+</div>
+</form>
+</div>
+</div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Mood selection
+    const moodBtns = document.querySelectorAll('.mood-btn');
+    const moodInput = document.getElementById('moodInput');
+
+    moodBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            moodBtns.forEach(b => b.classList.remove('border-primary', 'bg-primary/10'));
+            this.classList.add('border-primary', 'bg-primary/10');
+            moodInput.value = this.dataset.mood;
+        });
+    });
+
+    // Form submission
+    document.getElementById('checkinForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+
+        const formData = new FormData(this);
+        const data = Object.fromEntries(formData);
+
+        // Validate required fields
+        if (!data.mood || !data.stress || !data.energy || !data.social_contact) {
+            alert('Please fill in all required fields');
+            return;
+        }
+
+        try {
+            const response = await fetch('/api/checkin/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            });
+
+            if (response.ok) {
+                alert('Thank you for your check-in! Your wellbeing matters.');
+                window.location.href = '/dashboard';
+            } else {
+                alert('Failed to submit check-in. Please try again.');
+            }
+        } catch (error) {
+            console.error('Error submitting check-in:', error);
+            alert('Failed to submit check-in. Please try again.');
+        }
+    });
+});
+</script>
+{% endblock %}
