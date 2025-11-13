@@ -4,7 +4,7 @@
 # Databricks Configuration
 databricks:
   workspace_url: "https://dbc-dd65d31c-67f7.cloud.databricks.com"
-  token: "${DATABRICKS_TOKEN}"  # Set this environment variable with your token
+  token: "${dapi582ff440d523c68542430de0607646d9}"  # Set this environment variable with your token
   cluster_id: ""  # Will be set when cluster is created
 
   # Unity Catalog Settings
