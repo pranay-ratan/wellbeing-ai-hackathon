@@ -1,0 +1,144 @@
+# WellbeingAI Configuration for Databricks
+# Generated for workspace: https://dbc-dd65d31c-67f7.cloud.databricks.com
+
+# Databricks Configuration
+databricks:
+  workspace_url: "https://dbc-dd65d31c-67f7.cloud.databricks.com"
+  token: "${DATABRICKS_TOKEN}"  # Set this environment variable with your token
+  cluster_id: ""  # Will be set when cluster is created
+
+  # Unity Catalog Settings
+  catalog: "main"
+  schema: "wellbeing"
+
+  # Delta Lake Tables
+  tables:
+    user_profiles: "main.wellbeing.user_profiles"
+    daily_checkins: "main.wellbeing.checkins"
+    risk_scores: "main.wellbeing.risk_scores"
+    interventions: "main.wellbeing.interventions"
+    escalations: "main.wellbeing.escalations"
+    audit_log: "main.wellbeing.audit_log"
+
+# LLM Configuration
+llm:
+  # Primary: Databricks Llama 70B (if available)
+  databricks_llm:
+    model: "databricks-llama-70b-instruct"
+    endpoint: "llm/databricks-llama-70b-instruct"
+    temperature: 0.7
+    max_tokens: 1024
+
+  # Fallback: OpenAI GPT-4 (for hackathon)
+  fallback:
+    provider: "openai"
+    model: "gpt-4-turbo-preview"
+    api_key: "${OPENAI_API_KEY}"
+
+# Vector Search Configuration
+vector_search:
+  index_name: "main.wellbeing.interventions_index"
+  embedding_model: "all-MiniLM-L6-v2"
+  similarity_metric: "cosine"
+  top_k: 5
+
+# Risk Scoring Configuration
+risk_scoring:
+  model_version: "v1.0"
+  lookback_days: 90
+  thresholds:
+    low: 0.3
+    medium: 0.5
+    high: 0.7
+    critical: 0.85
+
+  # Weights for risk factors
+  weights:
+    mood_decline: 0.25
+    stress_increase: 0.20
+    energy_decline: 0.15
+    social_isolation: 0.20
+    sleep_disruption: 0.10
+    concerning_language: 0.10
+
+# Privacy Configuration
+privacy:
+  k_anonymity:
+    min_group_size: 5
+    suppression_threshold: 3
+
+  role_permissions:
+    employee:
+      - "read_own_data"
+    manager:
+      - "read_team_aggregate"
+      - "view_team_trends"
+    admin:
+      - "read_org_aggregate"
+      - "view_org_trends"
+      - "generate_reports"
+    counselor:
+      - "read_individual_data"
+      - "write_notes"
+      - "update_interventions"
+
+  audit:
+    enabled: true
+    retention_days: 365
+    log_queries: true
+
+# Intervention Configuration
+intervention:
+  types:
+    - "breathing_exercise"
+    - "peer_support_group"
+    - "counselor_session"
+    - "meditation_app"
+    - "wellness_workshop"
+    - "stress_management_course"
+    - "physical_activity"
+    - "social_connection"
+
+  effectiveness_threshold: 0.7
+
+# Escalation Configuration
+escalation:
+  auto_escalate_threshold: 0.7
+  counselor_matching:
+    match_by:
+      - "specialty"
+      - "availability"
+      - "past_success_rate"
+
+  notification:
+    email_enabled: true
+    sms_enabled: false
+    slack_enabled: true
+
+# Analytics Configuration
+analytics:
+  refresh_interval_minutes: 15
+  trend_window_days: 30
+  aggregation_levels:
+    - "individual"
+    - "team"
+    - "department"
+    - "organization"
+
+# Data Generation (for testing)
+data_generation:
+  num_users: 1000
+  num_days: 90
+  start_date: "2024-08-01"
+
+  # Simulation parameters
+  declining_user_pct: 0.15  # 15% of users show declining trends
+  improving_user_pct: 0.20  # 20% show improvement
+  stable_user_pct: 0.65     # 65% remain stable
+
+# System Configuration
+system:
+  log_level: "INFO"
+  max_workers: 4
+  cache_enabled: true
+  cache_ttl_seconds: 3600
