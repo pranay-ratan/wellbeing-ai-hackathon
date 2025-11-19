@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>WellbeingAI Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#13ec80",
+            "background-light": "#f6f8f7",
+            "background-dark": "#102219",
+          },
+          fontFamily: {
+            "display": ["Lexend", "sans-serif"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24
+    }
+  </style>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark">
+<div class="relative flex min-h-screen w-full">
+<!-- SideNavBar -->
+<aside class="flex h-screen w-64 flex-col bg-[#11221a] p-4 sticky top-0">
+<div class="flex flex-col gap-4">
+<div class="flex items-center gap-3">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="WellbeingAI Logo" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCDyaqtxKJ_dL6UYLS45Osp_8-Gz3dWvgyV6BRCSHMgJ6Qo-VhagYerQgISO2mLpXXtGxCLtRssgbI1hIihgmRF3QrHgRtxDasPTaPz7AXVJDNs2jaU6Zscw0APZBDEJhBO2rAbJFadSBF6Z6UmN23CSzf74f-oMy--wUw_aX5ZdIhXV8_RiHbyWAJKUgJUrW9tZpusxp_ZA_DXLY1liHPt5nlSofHeL2pmtiRAqjUYFaPzTwEqCH2q04woin9oAB7FdjEzPWmREbo");'></div>
+<div class="flex flex-col">
+<h1 class="text-white text-base font-medium leading-normal">WellbeingAI</h1>
+<p class="text-[#92c9ad] text-sm font-normal leading-normal">{{ user.email }}</p>
+</div>
+</div>
+<nav class="flex flex-col gap-2">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-[#234836]" href="#">
+<span class="material-symbols-outlined text-white text-[24px]">dashboard</span>
+<p class="text-white text-sm font-medium leading-normal">Dashboard</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-[#234836]/50 transition-colors" href="#">
+<span class="material-symbols-outlined text-white text-[24px]">book_2</span>
+<p class="text-white text-sm font-medium leading-normal">Resources</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-[#234836]/50 transition-colors" href="#">
+<span class="material-symbols-outlined text-white text-[24px]">group</span>
+<p class="text-white text-sm font-medium leading-normal">My Counselor</p>
+</a>
+</nav>
+</div>
+<div class="mt-auto flex flex-col gap-4">
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-[#11221a] text-sm font-bold leading-normal tracking-[0.015em]">
+<span class="truncate">Get Help Now</span>
+</button>
+<div class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-[#234836]/50 transition-colors" href="#">
+<span class="material-symbols-outlined text-white text-[24px]">settings</span>
+<p class="text-white text-sm font-medium leading-normal">Settings</p>
+</a>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 p-8">
+<div class="mx-auto max-w-7xl">
+<!-- PageHeading -->
+<div class="flex flex-wrap justify-between gap-3 mb-8">
+<div class="flex min-w-72 flex-col gap-3">
+<p class="text-white text-4xl font-black leading-tight tracking-[-0.033em]">Good morning, {{ user.name }}</p>
+<p class="text-[#92c9ad] text-base font-normal leading-normal">Here's your wellness overview for today.</p>
+</div>
+</div>
+<!-- Urgent Alert -->
+<div class="flex items-center gap-4 rounded-xl border border-red-500/50 bg-red-900/20 p-4 mb-8">
+<span class="material-symbols-outlined text-red-400 text-3xl">error</span>
+<div class="flex-1">
+<p class="text-white font-semibold">Immediate Support Available</p>
+<p class="text-red-300/80 text-sm">We've noticed a pattern that suggests you might be feeling overwhelmed. Please know that help is available. Click here to connect with a crisis counselor now.</p>
+</div>
+<button class="flex cursor-pointer items-center justify-center rounded-lg h-10 px-6 bg-red-500 text-white text-sm font-bold leading-normal">
+<span class="truncate">Connect Now</span>
+</button>
+</div>
+<!-- Grid Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Left Column -->
+<div class="lg:col-span-2 flex flex-col gap-8">
+<!-- Daily Check-in Card -->
+<div class="flex flex-col items-stretch justify-start rounded-xl bg-[#1a3a2b] @container">
+<div class="flex flex-col gap-4 p-6 @xl:flex-row @xl:items-center">
+<div class="flex w-full min-w-72 grow flex-col items-stretch justify-center gap-2">
+<p class="text-[#92c9ad] text-sm font-normal leading-normal">Daily Check-in</p>
+<p class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">How are you feeling today?</p>
+<p class="text-[#92c9ad] text-base font-normal leading-normal">Select an emoji that best represents your current mood.</p>
+</div>
+<div class="flex flex-1 items-center justify-around gap-2">
+<span class="material-symbols-outlined text-4xl text-gray-400 cursor-pointer hover:text-primary transition-colors">sentiment_very_dissatisfied</span>
+<span class="material-symbols-outlined text-4xl text-gray-400 cursor-pointer hover:text-primary transition-colors">sentiment_dissatisfied</span>
+<span class="material-symbols-outlined text-4xl text-gray-400 cursor-pointer hover:text-primary transition-colors">sentiment_neutral</span>
+<span class="material-symbols-outlined text-4xl text-gray-400 cursor-pointer hover:text-primary transition-colors">sentiment_satisfied</span>
+<span class="material-symbols-outlined text-4xl text-gray-400 cursor-pointer hover:text-primary transition-colors">sentiment_very_satisfied</span>
+</div>
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-[#11221a] text-sm font-bold leading-normal">
+<span class="truncate">Log Today's Mood</span>
+</button>
+</div>
+</div>
+<!-- Stats -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded-xl p-6 bg-[#234836]">
+<p class="text-white text-base font-medium leading-normal">My Wellness Score</p>
+<p class="text-white tracking-light text-3xl font-bold leading-tight">{{ wellness.wellness_score }}%</p>
+<p class="text-[#0bda46] text-base font-medium leading-normal">+{{ wellness.wellness_score_change }}% vs last week</p>
+</div>
+<div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded-xl p-6 bg-[#234836]">
+<p class="text-white text-base font-medium leading-normal">Avg. Mood (This Week)</p>
+<p class="text-white tracking-light text-3xl font-bold leading-tight">{{ wellness.avg_mood }}/10</p>
+<p class="text-[#0bda46] text-base font-medium leading-normal">+{{ wellness.avg_mood_change }} vs last week</p>
+</div>
+<div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded-xl p-6 bg-[#234836]">
+<p class="text-white text-base font-medium leading-normal">Check-ins Completed</p>
+<p class="text-white tracking-light text-3xl font-bold leading-tight">{{ wellness.checkins_completed }}</p>
+<p class="text-[#0bda46] text-base font-medium leading-normal">+{{ wellness.checkins_completed_change }} vs last week</p>
+</div>
+</div>
+<!-- Charts -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="flex min-w-72 flex-1 flex-col gap-2 rounded-xl border border-[#32674d] p-6">
+<p class="text-white text-base font-medium leading-normal">Mood Trends</p>
+<p class="text-white tracking-light text-[32px] font-bold leading-tight truncate">{{ wellness.mood_trends.value }}</p>
+<div class="flex gap-1">
+<p class="text-[#92c9ad] text-base font-normal leading-normal">Last 30 Days</p>
+<p class="text-[#0bda46] text-base font-medium leading-normal">{{ wellness.mood_trends.change }}</p>
+</div>
+<div class="flex min-h-[180px] flex-1 flex-col gap-8 py-4">
+<svg fill="none" height="148" preserveaspectratio="none" viewbox="-3 0 478 150" width="100%" xmlns="http://www.w3.org/2000/svg">
+<path d="M0 109C18.1538 109 18.1538 21 36.3077 21C54.4615 21 54.4615 41 72.6154 41C90.7692 41 90.7692 93 108.923 93C127.077 93 127.077 33 145.231 33C163.385 33 163.385 101 181.538 101C199.692 101 199.692 61 217.846 61C236 61 236 45 254.154 45C272.308 45 272.308 121 290.462 121C308.615 121 308.615 149 326.769 149C344.923 149 344.923 1 363.077 1C381.231 1 381.231 81 399.385 81C417.538 81 417.538 129 435.692 129C453.846 129 453.846 25 472 25V149H326.769H0V109Z" fill="url(#paint0_linear_1131_5935)"></path>
+<path d="M0 109C18.1538 109 18.1538 21 36.3077 21C54.4615 21 54.4615 41 72.6154 41C90.7692 41 90.7692 93 108.923 93C127.077 93 127.077 33 145.231 33C163.385 33 163.385 101 181.538 101C199.692 101 199.692 61 217.846 61C236 61 236 45 254.154 45C272.308 45 272.308 121 290.462 121C308.615 121 308.615 149 326.769 149C344.923 149 344.923 1 363.077 1C381.231 1 381.231 81 399.385 81C417.538 81 417.538 129 435.692 129C453.846 129 453.846 25 472 25" stroke="#13ec80" stroke-linecap="round" stroke-width="3"></path>
+<defs>
+<lineargradient gradientunits="userSpaceOnUse" id="paint0_linear_1131_5935" x1="236" x2="236" y1="1" y2="149">
+<stop stop-color="#234836"></stop>
+<stop offset="1" stop-color="#234836" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+</svg>
+</div>
+</div>
+<div class="flex min-w-72 flex-1 flex-col gap-2 rounded-xl border border-[#32674d] p-6">
+<p class="text-white text-base font-medium leading-normal">Stress Trends</p>
+<p class="text-white tracking-light text-[32px] font-bold leading-tight truncate">{{ wellness.stress_trends.value }}</p>
+<div class="flex gap-1">
+<p class="text-[#92c9ad] text-base font-normal leading-normal">Last 30 Days</p>
+<p class="text-[#fa5538] text-base font-medium leading-normal">{{ wellness.stress_trends.change }}</p>
+</div>
+<div class="flex min-h-[180px] flex-1 flex-col gap-8 py-4">
+<svg fill="none" height="148" preserveaspectratio="none" viewbox="-3 0 478 150" width="100%" xmlns="http://www.w3.org/2000/svg">
+<path d="M0 61C18.1538 61 18.1538 121 36.3077 121C54.4615 121 54.4615 101 72.6154 101C90.7692 101 90.7692 33 108.923 33C127.077 33 127.077 93 145.231 93C163.385 93 163.385 21 181.538 21C199.692 21 199.692 41 217.846 41C236 41 236 45 254.154 45C272.308 45 272.308 1 290.462 1C308.615 1 308.615 25 326.769 25C344.923 25 344.923 81 363.077 81C381.231 81 381.231 109 399.385 109C417.538 109 417.538 129 435.692 129C453.846 129 453.846 149 472 149V149H0V61Z" fill="url(#paint1_linear_1131_5935)"></path>
+<path d="M0 61C18.1538 61 18.1538 121 36.3077 121C54.4615 121 54.4615 101 72.6154 101C90.7692 101 90.7692 33 108.923 33C127.077 33 127.077 93 145.231 93C163.385 93 163.385 21 181.538 21C199.692 21 199.692 41 217.846 41C236 41 236 45 254.154 45C272.308 45 272.308 1 290.462 1C308.615 1 308.615 25 326.769 25C344.923 25 344.923 81 363.077 81C381.231 81 381.231 109 399.385 109C417.538 109 417.538 129 435.692 129C453.846 129 453.846 149 472 149" stroke="#fa5538" stroke-linecap="round" stroke-width="3"></path>
+<defs>
+<lineargradient gradientunits="userSpaceOnUse" id="paint1_linear_1131_5935" x1="236" x2="236" y1="1" y2="149">
+<stop stop-color="#482323"></stop>
+<stop offset="1" stop-color="#482323" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+</svg>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column -->
+<div class="lg:col-span-1 flex flex-col gap-8">
+<!-- AI Recommendations -->
+<div class="flex flex-col gap-4 rounded-xl border border-[#32674d] p-6">
+<h3 class="text-white text-lg font-bold">AI Recommendations</h3>
+<div class="flex flex-col gap-4">
+{% for recommendation in recommendations %}
+<div class="flex items-start gap-4">
+<div class="flex h-10 w-10 items-center justify-center rounded-full bg-primary/20">
+<span class="material-symbols-outlined text-primary">{{ recommendation.icon }}</span>
+</div>
+<div>
+<p class="text-white font-medium">{{ recommendation.title }}</p>
+<p class="text-[#92c9ad] text-sm">{{ recommendation.description }}</p>
+</div>
+</div>
+{% endfor %}
+</div>
+</div>
+<!-- Wellness Goals -->
+<div class="flex flex-col gap-4 rounded-xl border border-[#32674d] p-6">
+<h3 class="text-white text-lg font-bold">Wellness Goals</h3>
+<div class="flex flex-col gap-4">
+{% for goal in goals %}
+<div class="flex items-center gap-4">
+<div class="relative h-10 w-10">
+<svg class="size-full" height="36" viewbox="0 0 36 36" width="36" xmlns="http://www.w3.org/2000/svg">
+<circle class="stroke-current text-primary/20" cx="18" cy="18" fill="none" r="16" stroke-width="4"></circle>
+<circle class="stroke-current text-primary" cx="18" cy="18" fill="none" r="16" stroke-dasharray="100" stroke-dashoffset="{{ goal.stroke_offset }}" stroke-linecap="round" stroke-width="4"></circle>
+</svg>
+<div class="absolute inset-0 flex items-center justify-center"><span class="text-white text-xs font-bold">{{ goal.progress }}</span></div>
+</div>
+<p class="text-white flex-1">{{ goal.description }}</p>
+</div>
+{% endfor %}
+</div>
+</div>
+</div>
+</div>
+<!-- Privacy Footer -->
+<footer class="mt-12 text-center text-[#92c9ad] text-sm">
+<p>Your personal data is confidential and only visible to you and your counselor.</p>
+</footer>
+</div>
+</main>
+</div>
+</body></html>
