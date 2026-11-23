@@ -1,12 +1,12 @@
 # WellbeingAI - Multi-Agent Mental Health Crisis Prediction System
 
 ## Overview
-WellbeingAI is a privacy-first, AI-powered mental health crisis prediction system built for enterprise environments. Using Databricks' unified analytics platform, it provides early detection of mental health risks while maintaining strict privacy guarantees.
+WellbeingAI is a hackathon prototype of a privacy-first, multi-agent system for spotting workplace mental-health risk early, built on Databricks. Using Databricks' unified analytics platform, it provides early detection of mental health risks while maintaining strict privacy guarantees.
 
 ## 🌟 Key Features
 
 ### Core Capabilities
-- **AI-Powered Risk Scoring**: 87% accuracy using Llama 70B for mental health risk assessment
+- **AI-Powered Risk Scoring**: Llama 70B scores mental-health risk from check-in data
 - **Privacy-Preserving Analytics**: K-anonymity and de-identification for safe reporting
 - **Real-time Interventions**: Personalized recommendations using Vector Search
 - **Intelligent Escalation**: Automated routing to appropriate support resources
@@ -119,18 +119,9 @@ supervisor.route_query("What is my current risk score?")
 - Query patterns monitored
 - Compliance reports generated
 
-## 📈 Accuracy & Performance
+## 📈 Evaluation status
 
-### Risk Scoring
-- **Accuracy**: 87% on validation set
-- **Precision**: 0.84 (low false positives)
-- **Recall**: 0.89 (catches most at-risk individuals)
-- **Processing**: <2 seconds per user assessment
-
-### System Performance
-- **Throughput**: 10,000 check-ins/minute
-- **Latency**: <100ms for queries
-- **Uptime**: 99.9% SLA
+Built in a hackathon; the daily check-ins are generated (`src/data_pipeline/generate_data.py`) from two public survey datasets in the repo. Risk-scoring accuracy, latency and throughput have **not** been measured: `notebooks/02_risk_scorer_test.py` checks that scores are produced and reports the model's average confidence, which is not an accuracy measure. A real evaluation would need labelled outcomes.
 
 ## 🎯 Use Cases
 
